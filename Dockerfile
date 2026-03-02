@@ -15,5 +15,5 @@ COPY . .
 # Render ke liye port kholna
 EXPOSE 5000
 
-# Gunicorn server start karna (Flask ka baap, jo 24/7 chalega)
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+# 🔥 YAHAN CHANGE KIYA HAI: Timeout 86400 seconds (24 hours) kar diya aur threads badha diye
+CMD ["gunicorn", "--workers", "1", "--threads", "4", "--timeout", "86400", "-b", "0.0.0.0:5000", "app:app"]
